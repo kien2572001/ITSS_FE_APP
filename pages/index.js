@@ -1,7 +1,14 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    fetch("http://localhost:3000/api/hello")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,11 +19,11 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>
           {/* Welcome to <a href="https://nextjs.org">Next.js</a> on Docker! */}
-          Day la FE project ITSS 
+          Day la FE project ITSS
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -59,10 +66,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
+  );
 }
